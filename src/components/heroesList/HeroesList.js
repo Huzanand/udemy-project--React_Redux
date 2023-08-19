@@ -9,7 +9,7 @@ import Spinner from '../spinner/Spinner';
 // Задача для этого компонента:
 // + При клике на "крестик" идет удаление персонажа из общего состояния
 // Усложненная задача:
-// Удаление идет и с json файла при помощи метода DELETE
+// + Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
     const {heroes, heroesLoadingStatus} = useSelector(state => state);
@@ -31,7 +31,7 @@ const HeroesList = () => {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
 
-    const deleteHeroFromList = (arr, heroId) =>{
+    const deleteHero = (arr, heroId) =>{
         dispatch(heroesDelete(arr, heroId))
         request(`http://localhost:3001/heroes/${heroId}`, 'DELETE')
             .catch(() => dispatch(heroesFetchingError()))
@@ -43,10 +43,10 @@ const HeroesList = () => {
         }
 
         return arr.map(({id, ...props}) => {
-            return <HeroesListItem key={id} {...props} deleteHero={() => deleteHeroFromList(arr, id)}/>
+            return <HeroesListItem key={id} {...props} deleteHero={() => deleteHero(arr, id)}/>
         })
     }
-
+    
     const elements = renderHeroesList(heroes);
     return (
         <ul>
