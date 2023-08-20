@@ -20,10 +20,11 @@
         }
     ],
     "filters": [
-        "all",
-        "fire",
-        "water",
-        "wind",
-        "earth"
+        {"all": "Я владею элементом..."},
+        {"fire": "Огонь"},
+        {"water": "Вода"},
+        {"wind": "Ветер"},
+        {"earth": "Земля"},
+        {"test": "test gone well"}
     ]
 }

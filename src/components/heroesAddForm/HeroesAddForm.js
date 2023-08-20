@@ -2,20 +2,19 @@ import { useHttp } from "../../hooks/http.hook";
 import { useEffect } from "react";
 import { filtersFetching, filtersFetched, filtersFetchingError } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 // Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid(ПОТОМ)
+//   Реализовать создание нового героя с введенными данными. Он должен попадать
+//   в общее состояние и отображаться в списке + фильтроваться
+//   Уникальный идентификатор персонажа можно сгенерировать через uiid(ПОТОМ)
 // Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
+//   Персонаж создается и в файле json при помощи метода POST
+//   Дополнительно:
+// + Элементы <option></option> желательно сформировать на базе
+//   данных из фильтров
 
 
-// ФИЛЬТРЫ С СЕРВЕРА РЕАЛИЗОВАНО, НО ЕСТЬ ВОПРОС С МАСШТАБИРОВАНИЕМ (ПРИ ДОБАВЛЕНИИ 
-// СВОЙСТВ - КОРЕКТНОЙ РАБОТЫ НЕ БУДЕТ) (КОСТЫЛИ ЧЕРЕЗ Object.values & Object.keys ????)
+
 
 
 const HeroesAddForm = () => {
@@ -37,25 +36,13 @@ const HeroesAddForm = () => {
             return <option key={0}>Элементы не загрузились...</option>
         }
 
-        return arr.map((item, i) =>{
-            switch (item){
-            case "all":
-                return <option key={i}>Я владею элементом...</option>
-            case "fire":
-                return <option value={item[0]} key={i}>Огонь</option>
-            case "water":
-                return <option value={item[0]} key={i}>Вода</option>
-            case "wind":
-                return <option value={item[0]} key={i}>Ветер</option>
-            case "earth":
-                return <option value={item[0]} key={i}>Земля</option>
-            default: return null
-            }
+        return arr.map((item, i) =>{             
+            return <option value={Object.keys(item)[0]} key={i}>{Object.values(item)[0]}</option>
         })
     }
     
     const renderFilters = renderFiltersList(filters)
-
+    console.log(renderFilters)
     return (
         <form className="border p-4 shadow-lg rounded">
             <div className="mb-3">
