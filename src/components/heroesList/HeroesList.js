@@ -1,6 +1,7 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { heroesFetching, heroesFetched, heroesFetchingError, heroDelete} from '../../actions';
@@ -10,7 +11,21 @@ import Spinner from '../spinner/Spinner';
 import './heroList.scss';
 
 const HeroesList = () => {
-    const {filteredHeroes, heroesLoadingStatus} = useSelector(state => state);
+    
+    const filteredHeroesSelector = createSelector(
+        state => state.filters.activeFilter,
+        state => state.heroes.heroes,
+        (filter, heroes) => {
+            if (filter === 'all'){
+                    return heroes;
+                } else {
+                    return heroes.filter((item => item.element === filter))
+                }
+        }
+    )
+
+    const filteredHeroes = useSelector(filteredHeroesSelector)
+    const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -40,7 +55,7 @@ const HeroesList = () => {
         if (arr.length === 0) {
             return (
                 <CSSTransition
-                    timeout={0}
+                    timeout={500}
                     classNames="hero">
                         <h5 className="text-center mt-5">Героев пока нет</h5>
                 </CSSTransition>
@@ -51,6 +66,7 @@ const HeroesList = () => {
             return (
                 <CSSTransition
                     key={id}
+                    timeout={500}
                     classNames="hero">
                         <HeroesListItem {...props} onDelete={() => onDelete(id)}/>
                 </CSSTransition>
