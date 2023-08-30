@@ -7,12 +7,12 @@ const initialState = {
 }
 
 const filtersSlice = createSlice({
-    name: filters,
+    name: 'filters',
     initialState,
     reducers: {
         filtersFetching: state => {state.filtersLoadingStatus = 'loading'},
         filtersFetched: (state, action) => {
-            state.filtersLoadingStatus = 'idle',
+            state.filtersLoadingStatus = 'idle';
             state.filters = action.payload
         },
         filtersFetchingError: state => {state.filtersLoadingStatus = 'error'},

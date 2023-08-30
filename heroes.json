@@ -1,27 +1,27 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "id": "e2e74c9b-7ef7-4989-bcff-c9f1e321e2db",
+      "name": "Перший герой!",
+      "description": "Перший герой у рейтингу!",
       "element": "fire"
     },
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "id": "5ea85184-491e-4857-b342-37023fca8e9c",
+      "name": "Невідомий герой ",
+      "description": "Той, що ховається в тіні",
       "element": "wind"
     },
     {
-      "id": 3,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
+      "id": "7896bc51-0d04-4e06-b1b2-9bc67d3bda51",
+      "name": "Морський герой ",
+      "description": "Як аквамен, но не з DC",
       "element": "water"
     },
     {
-      "id": "3b482354-c6b0-4c87-9935-4ff6e49e70c0",
-      "name": "Huzanand",
-      "description": "Ebashy zemlei nahui!",
+      "id": "5e0c8acb-b787-4545-8fff-458666bc9774",
+      "name": "Новий герой!",
+      "description": "Непохитний немов скеля",
       "element": "earth"
     }
   ],
@@ -33,7 +33,7 @@
     },
     {
       "name": "fire",
-      "label": "Огонь",
+      "label": "Вогонь",
       "className": "btn btn-danger"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "name": "wind",
-      "label": "Ветер",
+      "label": "Вітер",
       "className": "btn btn-success"
     },
     {

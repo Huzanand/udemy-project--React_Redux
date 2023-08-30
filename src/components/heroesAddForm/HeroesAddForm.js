@@ -38,9 +38,9 @@ const HeroesAddForm = () => {
 
     const renderFilters = (arr) => {
         if (filtersLoadingStatus === 'loading') {
-            return <option key={0}>Элементы еще не загрузились...</option>
+            return <option key={0}>Елементи ще не загрузились...</option>
         } else if (filtersLoadingStatus === 'error') {
-            return <option key={0}>Ошибка сервера...</option>
+            return <option key={0}>Помилка сервера...</option>
         }
 
         return arr.map((item, i) =>{
@@ -54,36 +54,36 @@ const HeroesAddForm = () => {
         
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmitHandler}>
             <div className="mb-3">
-                <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
+                <label htmlFor="name" className="form-label fs-4">Им'я нового героя</label>
                 <input 
                     type="text" 
                     name="name" 
                     className="form-control" 
                     id="name" 
-                    placeholder="Как меня зовут?"
+                    placeholder="Як мене звуть?"
                     onChange={e => setHeroName(e.target.value)}/>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="text" className="form-label fs-4">Описание</label>
+                <label htmlFor="text" className="form-label fs-4">Опис</label>
                 <textarea 
                     required 
                     name="description" 
                     className="form-control" 
                     id="description" 
-                    placeholder="Что я умею?"
+                    placeholder="Що я вмію?"
                     style={{"height": '130px'}}
                     onChange={e => setHeroDescription(e.target.value)}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
+                <label htmlFor="element" className="form-label">Обрати елемент героя</label>
                 <select 
                     required 
                     className="form-select" 
                     id="element" 
                     name="element"
                     onChange={e => setHeroElement(e.target.value)}>
-                    <option value="">Я владею элементом...</option>
+                    <option value="">Я володію елементом...</option>
                     {renderFilters(filters, filtersLoadingStatus)}
                 </select>
             </div>
