@@ -27,7 +27,7 @@
   ],
   "filters": [
     {
-      "id" : "all",
+      "id": "all",
       "name": "all",
       "label": "Все",
       "className": "btn btn-outline-dark"
